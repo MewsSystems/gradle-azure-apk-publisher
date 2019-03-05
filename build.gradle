@@ -1,0 +1,48 @@
+plugins {
+    id 'java-gradle-plugin'
+    id 'org.jetbrains.kotlin.jvm' version '1.3.21'
+    id 'com.gradle.plugin-publish' version '0.10.0'
+}
+
+version = '0.1'
+
+gradlePlugin {
+    plugins {
+        azurePublishPlugin {
+            id = 'li.mews.android.gradle-azure-apk-publisher'
+            displayName = 'Azure Storage APK Publisher'
+            description = 'Publishes Android APKs to Azure Storage'
+            implementationClass = 'li.mews.android.azurepublish.AzurePublishPlugin'
+        }
+    }
+}
+repositories {
+    google()
+    jcenter()
+    maven {
+        url = uri("https://maven.fabric.io/public")
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation gradleApi()
+    implementation "com.android.tools.build:gradle:3.3.2"
+    implementation "com.microsoft.azure:azure-storage:2.0.0"
+}
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+pluginBundle {
+    website = "https://github.com/MewsSystems/gradle-azure-apk-publisher"
+    vcsUrl = "https://github.com/MewsSystems/gradle-azure-apk-publisher"
+    tags = ['azure', 'android']
+}
