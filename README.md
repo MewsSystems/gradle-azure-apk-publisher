@@ -1,6 +1,6 @@
 # Azure Storage Build Publisher
 
-With this plugin you can upload Android build via command line or Android Studio.
+With this plugin you can upload Android build to Azure Storage via command line or Android Studio.
 
 # Installation
 
